@@ -1,4 +1,8 @@
 'use strict';
 
-export { parse } from './parse.js';
-export { stringify } from './stringify.js';
+import { parse } from './parse.js';
+import { stringify } from './stringify.js';
+
+export { parse, stringify };
+
+export default { parse, stringify };

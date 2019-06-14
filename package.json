@@ -8,8 +8,7 @@
     "test": "jest",
     "docs:md": "documentation build src/** -f md -o README.md",
     "docs:html": "documentation build src/** -f html -o docs",
-    "build": "yarn test && yarn docs:md && babel ./src --ignore '**/*.test.js' --out-dir lib",
-    "publish": "yarn build && npm publish"
+    "build": "yarn test && yarn docs:md && babel ./src --ignore '**/*.test.js' --out-dir lib"
   },
   "author": "vivgman@bk.ru",
   "license": "ISC",
