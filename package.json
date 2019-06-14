@@ -19,5 +19,9 @@
     "@babel/preset-env": "^7.4.5",
     "babel-jest": "^24.8.0",
     "jest": "^24.8.0"
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/vivGman/query-params-helpers"
   }
 }
