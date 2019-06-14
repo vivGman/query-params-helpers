@@ -5,14 +5,21 @@
  * @param {String} queryString - Строка запроса
  * @param {Object} options
  * @param {String} options.output - Формат вывода array, tree
- * @param {Boolean} options.typeConversion - Приведение типов
+ * @param {Boolean} options.conversion - Приведение типов
  * @return {Object|Array}
  *
  * @example
+ * import { parse } from 'query-params-helpers';
  *
- * parse('?foo=1&bar[x]=2&bar[y]=3') // { foo: 1, bar: { x: 1, y: 2 } }
+ * parse('?foo=bar'); // { foo: 'bar' }
+ * 
+ * parse('?foo[]=1&foo[]=2'); // { foo: [1, 2] }
+ * 
+ * parse('?foo=1&bar[x]=2&bar[y]=3'); // { foo: 1, bar: { x: 1, y: 2 } }
+ * 
+ * parse('?foo[0][x]=10&foo[0][y]=20&foo[1][x]=30&foo[1][y]=40'); // { foo: [{ x: 10, y: 20 }, { x: 30, y: 40 }] }
  */
-export function parse(queryString, options={ output: 'tree', typeConversion: true }) {
+export function parse(queryString, options={ output: 'tree', conversion: true }) {
     switch (options.output) {
         case 'array': return stringToArray(queryString, options);
         case 'tree': return stringToTree(queryString, options);
@@ -23,7 +30,7 @@ export function parse(queryString, options={ output: 'tree', typeConversion: tru
 export function stringToArray(queryString='', options={}) {
 
     const {
-        typeConversion = true
+        conversion = true
     } = options;
 
     if (queryString.match(/\?/)) {
@@ -37,7 +44,7 @@ export function stringToArray(queryString='', options={}) {
         .map(function(param) {
             let [ name, value ] = param.split('=')
 
-            if (typeConversion && typeof value === 'string') {
+            if (conversion && typeof value === 'string') {
                 if (!isNaN(+value)) {
                     value = +value;
                 } else if (value.match(/^(true|false)$/)) {

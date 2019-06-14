@@ -5,6 +5,9 @@
 -   [parse][1]
     -   [Parameters][2]
     -   [Examples][3]
+-   [stringify][4]
+    -   [Parameters][5]
+    -   [Examples][6]
 
 ## parse
 
@@ -12,18 +15,51 @@
 
 ### Parameters
 
--   `queryString` **[String][4]** Строка запроса
--   `options` **[Object][5]**  (optional, default `{output:'tree',typeConversion:true}`)
-    -   `options.output` **[String][4]** Формат вывода array, tree
-    -   `options.typeConversion` **[Boolean][6]** Приведение типов
+-   `queryString` **[String][7]** Строка запроса
+-   `options` **[Object][8]**  (optional, default `{output:'tree',conversion:true}`)
+    -   `options.output` **[String][7]** Формат вывода array, tree
+    -   `options.conversion` **[Boolean][9]** Приведение типов
 
 ### Examples
 
 ```javascript
-parse('?foo=1&bar[x]=2&bar[y]=3') // { foo: 1, bar: { x: 1, y: 2 } }
+import { parse } from 'query-params-helpers';
+
+parse('?foo=bar'); // { foo: 'bar' }
+
+parse('?foo[]=1&foo[]=2'); // { foo: [1, 2] }
+
+parse('?foo=1&bar[x]=2&bar[y]=3'); // { foo: 1, bar: { x: 1, y: 2 } }
+
+parse('?foo[0][x]=10&foo[0][y]=20&foo[1][x]=30&foo[1][y]=40'); // { foo: [{ x: 10, y: 20 }, { x: 30, y: 40 }] }
 ```
 
-Returns **([Object][5] \| [Array][7])** 
+Returns **([Object][8] \| [Array][10])** 
+
+## stringify
+
+Приводит объект к URL строке
+
+### Parameters
+
+-   `object` **[Object][8]** Исходный объект
+-   `url` **[Object][8]** дефолтный url (optional, default `''`)
+
+### Examples
+
+```javascript
+import { stringify } from 'query-params-helpers';
+
+stringify({ foo: 'bar' }); // '?foo=bar'
+
+stringify({ foo: [1, 2] }); // '?foo[]=1&foo[]=2'
+
+stringify({ foo: 1, bar: { x: 1, y: 2 } }); // '?foo=1&bar[x]=2&bar[y]=3'
+
+stringify({ foo: [{ x: 10, y: 20 }, { x: 30, y: 40 }] }); // '?foo[0][x]=10&foo[0][y]=20&foo[1][x]=30&foo[1][y]=40'
+```
+
+Returns **[String][7]** 
 
 [1]: #parse
 
@@ -31,10 +67,16 @@ Returns **([Object][5] \| [Array][7])**
 
 [3]: #examples
 
-[4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[4]: #stringify
 
-[5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[5]: #parameters-1
 
-[6]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+[6]: #examples-1
 
-[7]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+[7]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+
+[8]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+
+[9]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+
+[10]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array

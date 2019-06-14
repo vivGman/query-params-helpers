@@ -1,24 +1,24 @@
-import { treeToString } from './stringify'
+import { stringify } from './stringify'
 
-test('test treeToString', () => {
+test('test stringify', () => {
     const input = {
         foo: 'bar'
     };
     const output = '?foo=bar'
 
-    expect(treeToString(input)).toBe(output);
+    expect(stringify(input)).toBe(output);
 });
 
-test('test treeToString hash with array', () => {
+test('test stringify hash with array', () => {
     const input = {
         foo: [1, 2]
     };
     const output = '?foo[0]=1&foo[1]=2'
     
-    expect(treeToString(input)).toBe(output);
+    expect(stringify(input)).toBe(output);
 });
 
-test('test treeToString hash with nested array', () => {
+test('test stringify hash with nested array', () => {
     const input = {
         foo: [{
             id: 1
@@ -28,5 +28,5 @@ test('test treeToString hash with nested array', () => {
     };
     const output = '?foo[0][id]=1&foo[1][id]=2'
 
-    expect(treeToString(input)).toBe(output);
+    expect(stringify(input)).toBe(output);
 });

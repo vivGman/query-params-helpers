@@ -56,7 +56,7 @@ test('test stringToTree, expected array of boolean', () => {
 });
 
 test('test stringToTree, expected array of boolean without conversion', () => {
-    expect(stringToTree('?array[]=true&array[]=true&array[]=false', { typeConversion: false })).toEqual({
+    expect(stringToTree('?array[]=true&array[]=true&array[]=false', { conversion: false })).toEqual({
         array: [
             'true', 
             'true',

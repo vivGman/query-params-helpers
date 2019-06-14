@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "docs": "documentation build src/** -f md -o README.md",
-    "build": "babel ./src --out-dir lib"
+    "docs:md": "documentation build src/** -f md -o README.md",
+    "docs:html": "documentation build src/** -f html -o docs",
+    "build": "yarn test && yarn docs:md && babel ./src --ignore '**/*.test.js' --out-dir lib"
   },
   "author": "",
   "license": "ISC",
