@@ -11,13 +11,35 @@
  * @example
  * import { parse } from 'query-params-helpers';
  *
- * parse('?foo=bar'); // { foo: 'bar' }
+ * parse('?foo=bar'); 
+ * // { 
+ * //    foo: 'bar' 
+ * // }
  * 
- * parse('?foo[]=1&foo[]=2'); // { foo: [1, 2] }
+ * parse('?foo[]=1&foo[]=2'); 
+ * // { 
+ * //    foo: [1, 2] 
+ * // }
  * 
- * parse('?foo=1&bar[x]=2&bar[y]=3'); // { foo: 1, bar: { x: 1, y: 2 } }
+ * parse('?foo=1&bar[x]=2&bar[y]=3'); 
+ * // { 
+ * //    foo: 1, 
+ * //    bar: { 
+ * //      x: 2, 
+ * //      y: 3 
+ * //    } 
+ * // }
  * 
- * parse('?foo[0][x]=10&foo[0][y]=20&foo[1][x]=30&foo[1][y]=40'); // { foo: [{ x: 10, y: 20 }, { x: 30, y: 40 }] }
+ * parse('?foo[0][x]=10&foo[0][y]=20&foo[1][x]=30&foo[1][y]=40'); 
+ * // { 
+ * //   foo: [{ 
+ * //     x: 10, 
+ * //     y: 20 
+ * //   }, { 
+ * //     x: 30, 
+ * //     y: 40 
+ * //   }] 
+ * // }
  */
 export function parse(queryString, options={ output: 'tree', conversion: true }) {
     switch (options.output) {

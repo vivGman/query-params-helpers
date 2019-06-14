@@ -8,13 +8,17 @@
  * @example
  * import { stringify } from 'query-params-helpers';
  *
- * stringify({ foo: 'bar' }); // '?foo=bar'
+ * stringify({ foo: 'bar' }); 
+ * // '?foo=bar'
  * 
- * stringify({ foo: [1, 2] }); // '?foo[]=1&foo[]=2'
+ * stringify({ foo: [1, 2] }); 
+ * // '?foo[]=1&foo[]=2'
  * 
- * stringify({ foo: 1, bar: { x: 1, y: 2 } }); // '?foo=1&bar[x]=2&bar[y]=3'
+ * stringify({ foo: 1, bar: { x: 1, y: 2 } }); 
+ * // '?foo=1&bar[x]=2&bar[y]=3'
  * 
- * stringify({ foo: [{ x: 10, y: 20 }, { x: 30, y: 40 }] }); // '?foo[0][x]=10&foo[0][y]=20&foo[1][x]=30&foo[1][y]=40'
+ * stringify({ foo: [{ x: 10, y: 20 }, { x: 30, y: 40 }] }); 
+ * // '?foo[0][x]=10&foo[0][y]=20&foo[1][x]=30&foo[1][y]=40'
  */
 export function stringify(object, url = '') {
     let [path = '', params = ''] = url.split('?');
