@@ -11,14 +11,14 @@
 
 ## parse
 
-Парсит параметры из строки поиска или URL
+Parse params from query string
 
 ### Parameters
 
--   `queryString` **[String][7]** Строка запроса
+-   `queryString` **[String][7]** Query string. May include host and hash. If string not include query params thish function will parse hash params
 -   `options` **[Object][8]**  (optional, default `{output:'tree',conversion:true}`)
-    -   `options.output` **[String][7]** Формат вывода array, tree
-    -   `options.conversion` **[Boolean][9]** Приведение типов
+    -   `options.output` **[String][7]** Output format. This parameter must be an array or tree. (optional, default `tree`)
+    -   `options.conversion` **[Boolean][9]** If false, numbers and boolean values will be a strings (optional, default `true`)
 
 ### Examples
 
@@ -60,12 +60,12 @@ Returns **([Object][8] \| [Array][10])**
 
 ## stringify
 
-Приводит объект к URL строке
+Convert object to query string
 
 ### Parameters
 
--   `object` **[Object][8]** Исходный объект
--   `url` **[Object][8]** дефолтный url (optional, default `''`)
+-   `object` **[Object][8]** Source object
+-   `url` **[Object][8]** default url (optional, default `''`)
 
 ### Examples
 

@@ -1,8 +1,8 @@
 /**
- * Приводит объект к URL строке
+ * Convert object to query string
  * 
- * @param {Object} object - Исходный объект
- * @param {Object} url - дефолтный url
+ * @param {Object} object - Source object
+ * @param {Object} [url=''] - default url
  * @return {String}
  *
  * @example
