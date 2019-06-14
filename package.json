@@ -1,0 +1,20 @@
+{
+  "name": "query-params-helpers",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "docs": "documentation build src/** -f md -o README.md",
+    "build": "babel ./src --out-dir lib"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/cli": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "babel-jest": "^24.8.0",
+    "jest": "^24.8.0"
+  }
+}
