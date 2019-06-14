@@ -1,6 +1,6 @@
 {
   "name": "query-params-helpers",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "keywords": ["query params", "search params", "parse url", "parse query", "parse search"],
   "main": "lib/index.js",
@@ -8,7 +8,8 @@
     "test": "jest",
     "docs:md": "documentation build src/** -f md -o README.md",
     "docs:html": "documentation build src/** -f html -o docs",
-    "build": "yarn test && yarn docs:md && babel ./src --ignore '**/*.test.js' --out-dir lib"
+    "build": "yarn test && yarn docs:md && babel ./src --ignore '**/*.test.js' --out-dir lib",
+    "publish": "yarn build && npm publish"
   },
   "author": "vivgman@bk.ru",
   "license": "ISC",
